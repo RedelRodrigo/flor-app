@@ -1,4 +1,4 @@
-const CACHE = 'para-vos-v1';
+const CACHE = 'para-vos-v2';
 const ARCHIVOS = [
   './',
   './index.html',
@@ -25,6 +25,12 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request).then((cached) => cached || fetch(event.request))
+    fetch(event.request)
+      .then((respuesta) => {
+        const copia = respuesta.clone();
+        caches.open(CACHE).then((cache) => cache.put(event.request, copia));
+        return respuesta;
+      })
+      .catch(() => caches.match(event.request)) // si no hay internet, usa lo guardado
   );
 });
