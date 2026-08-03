@@ -313,8 +313,35 @@
     setTimeout(()=>c.classList.add('on'), 4300);
   }
 
-  if('serviceWorker' in navigator){
-    navigator.serviceWorker.register('sw.js').catch(()=>{});
+ if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('sw.js').then((reg) => {
+      // apenas se abre la app, chequea si hay una versión nueva
+      reg.update();
+
+      // y también cada vez que vuelve del segundo plano (la abrió desde el ícono)
+      document.addEventListener('visibilitychange', () => {
+        if(document.visibilityState === 'visible') reg.update();
+      });
+
+      reg.addEventListener('updatefound', () => {
+        const nueva = reg.installing;
+        if(!nueva) return;
+        nueva.addEventListener('statechange', () => {
+          if(nueva.state === 'installed' && navigator.serviceWorker.controller){
+            // hay una versión nueva lista: recargar solo, sin avisar
+            window.location.reload();
+          }
+        });
+      });
+    }).catch(()=>{});
+
+    // por si el "activate" del sw ya tomó control, recarga una sola vez
+    let yaRecargo = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if(yaRecargo) return;
+      yaRecargo = true;
+      window.location.reload();
+    });
   }
 </script>
 </body>
