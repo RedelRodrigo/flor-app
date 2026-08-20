@@ -1,348 +1,498 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
-<title>Para vos</title>
-<meta name="theme-color" content="#141d18">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Para vos">
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="icon" href="icon-192.png">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no"
+    />
+    <title>Para vos</title>
+    <meta name="theme-color" content="#141d18" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="Para vos" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="icon" href="icon-192.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Quicksand:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
 
-<!-- ======================================================= -->
-<!--  EDITÁ ACÁ: nombre y mensaje que quieras regalarle        -->
-<!-- ======================================================= -->
-<script>
-  window.CONFIG = {
-    nombre: "Mi amor",
-    mensaje: "Gracias por ser la luz que ilumina mis días y la calma que llena mis noches. Cada momento contigo es un regalo que atesoro profundamente. Eres mi refugio, mi alegría y mi inspiración constante. Te amo más de lo que las palabras pueden expresar, y cada día a tu lado es un recordatorio de lo afortunado que soy de tenerte en mi vida.",
-    firma: "— Te amo con todo mi corazón."
-  };
-</script>
-<!-- ======================================================= -->
+    <!-- ======================================================= -->
+    <!--  EDITÁ ACÁ: nombre y mensaje que quieras regalarle        -->
+    <!-- ======================================================= -->
+    <script>
+      window.CONFIG = {
+        nombre: "Mi amor",
+        mensaje:
+          "Hoy y siempre quiero que sepas que sos la persona más importante en mi vida. Gracias por estar a mi lado y hacerme sentir amado cada día. Soy feliz con vos!",
+        firma: "— Te amo con todo mi corazón.",
+      };
+    </script>
+    <!-- ======================================================= -->
 
-<style>
-  :root{
-    --noche-1:#0f1712;
-    --noche-2:#1c2a20;
-    --musgo:#3f5943;
-    --tallo:#4a6b4f;
-    --petalo-1:#f3b6c4;
-    --petalo-2:#e896a8;
-    --centro:#e8b86d;
-    --crema:#fdf6ef;
-    --luciernaga:#f4d58d;
-  }
+    <style>
+      :root {
+        --noche-1: #0f1712;
+        --noche-2: #1c2a20;
+        --musgo: #3f5943;
+        --tallo: #4a6b4f;
+        --petalo-1: #f3b6c4;
+        --petalo-2: #e896a8;
+        --centro: #e8b86d;
+        --crema: #fdf6ef;
+        --luciernaga: #f4d58d;
+      }
 
-  *{ box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+      * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+      }
 
-  html,body{
-    margin:0; padding:0; height:100%;
-    background:
-      radial-gradient(120% 90% at 50% 0%, var(--noche-2) 0%, var(--noche-1) 65%);
-    overflow:hidden;
-    font-family:'Quicksand', sans-serif;
-  }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: radial-gradient(
+          120% 90% at 50% 0%,
+          var(--noche-2) 0%,
+          var(--noche-1) 65%
+        );
+        overflow: hidden;
+        font-family: "Quicksand", sans-serif;
+      }
 
-  #escena{
-    position:relative;
-    width:100%;
-    height:100dvh;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    padding:24px;
-    padding-bottom:300px;
-  }
+      #escena {
+        position: relative;
+        width: 100%;
+        height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        padding-bottom: 300px;
+      }
 
-  /* ---------- tierra ---------- */
-  .suelo{
-    position:absolute;
-    bottom:0; left:0; right:0;
-    height:14%;
-    background:linear-gradient(180deg, rgba(20,26,20,0) 0%, rgba(10,14,10,0.55) 100%);
-  }
+      /* ---------- tierra ---------- */
+      .suelo {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 14%;
+        background: linear-gradient(
+          180deg,
+          rgba(20, 26, 20, 0) 0%,
+          rgba(10, 14, 10, 0.55) 100%
+        );
+      }
 
-  /* ---------- luciérnagas de fondo ---------- */
-  .luciernagas{ position:absolute; inset:0; pointer-events:none; opacity:0; transition:opacity 2s ease; }
-  .luciernagas.on{ opacity:1; }
-  .luciernaga{
-    position:absolute;
-    width:4px; height:4px;
-    border-radius:50%;
-    background:var(--luciernaga);
-    box-shadow:0 0 8px 2px var(--luciernaga);
-    animation:flotar 7s ease-in-out infinite;
-  }
-  @keyframes flotar{
-    0%,100%{ transform:translateY(0) translateX(0); opacity:.15; }
-    50%{ transform:translateY(-22px) translateX(10px); opacity:.85; }
-  }
+      /* ---------- luciérnagas de fondo ---------- */
+      .luciernagas {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 2s ease;
+      }
+      .luciernagas.on {
+        opacity: 1;
+      }
+      .luciernaga {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--luciernaga);
+        box-shadow: 0 0 8px 2px var(--luciernaga);
+        animation: flotar 7s ease-in-out infinite;
+      }
+      @keyframes flotar {
+        0%,
+        100% {
+          transform: translateY(0) translateX(0);
+          opacity: 0.15;
+        }
+        50% {
+          transform: translateY(-22px) translateX(10px);
+          opacity: 0.85;
+        }
+      }
 
-  /* ---------- contenedor flor ---------- */
-  .flor-wrap{
-    width:min(92vw,520px);
-    aspect-ratio:2/3;
-    position:relative;
-    /* margin-top:-200px; */
-  }
+      /* ---------- contenedor flor ---------- */
+      .flor-wrap {
+        width: min(92vw, 520px);
+        aspect-ratio: 2/3;
+        position: relative;
+        /* margin-top:-200px; */
+      }
 
-  svg{ width:100%; height:100%; overflow:visible; }
+      svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
 
-  .tallo-path{
-    fill:none;
-    stroke:var(--tallo);
-    stroke-width:6;
-    stroke-linecap:round;
-    stroke-dasharray:340;
-    stroke-dashoffset:340;
-    animation:crecer 1.8s 0.3s cubic-bezier(.34,1.1,.6,1) forwards;
-  }
-  @keyframes crecer{ to{ stroke-dashoffset:0; } }
+      .tallo-path {
+        fill: none;
+        stroke: var(--tallo);
+        stroke-width: 6;
+        stroke-linecap: round;
+        stroke-dasharray: 340;
+        stroke-dashoffset: 340;
+        animation: crecer 1.8s 0.3s cubic-bezier(0.34, 1.1, 0.6, 1) forwards;
+      }
+      @keyframes crecer {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
 
-  .hoja{
-    transform-origin:var(--ox) var(--oy);
-    transform:scale(0) rotate(var(--rot));
-    opacity:0;
-    animation:hoja-aparece .9s cubic-bezier(.34,1.4,.6,1) forwards;
-  }
-  .hoja.h1{ animation-delay:1.1s; }
-  .hoja.h2{ animation-delay:1.5s; }
-  @keyframes hoja-aparece{
-    to{ transform:scale(1) rotate(var(--rot)); opacity:1; }
-  }
+      .hoja {
+        transform-origin: var(--ox) var(--oy);
+        transform: scale(0) rotate(var(--rot));
+        opacity: 0;
+        animation: hoja-aparece 0.9s cubic-bezier(0.34, 1.4, 0.6, 1) forwards;
+      }
+      .hoja.h1 {
+        animation-delay: 1.1s;
+      }
+      .hoja.h2 {
+        animation-delay: 1.5s;
+      }
+      @keyframes hoja-aparece {
+        to {
+          transform: scale(1) rotate(var(--rot));
+          opacity: 1;
+        }
+      }
 
-  .capullo{
-    transform-origin:200px 210px;
-    transform:scale(.15);
-    opacity:0;
-    animation:capullo-sube 1.1s 1.9s cubic-bezier(.3,1.2,.5,1) forwards;
-  }
-  @keyframes capullo-sube{
-    to{ transform:scale(1); opacity:1; }
-  }
+      .capullo {
+        transform-origin: 200px 210px;
+        transform: scale(0.15);
+        opacity: 0;
+        animation: capullo-sube 1.1s 1.9s cubic-bezier(0.3, 1.2, 0.5, 1)
+          forwards;
+      }
+      @keyframes capullo-sube {
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
 
-  .petalo{
-    transform-origin:200px 210px;
-    transform:scale(0) rotate(var(--rot));
-    opacity:0;
-    animation:abrir 1.15s cubic-bezier(.25,1.6,.4,1) forwards;
-  }
-  .petalo:nth-child(1){ animation-delay:2.5s; }
-  .petalo:nth-child(2){ animation-delay:2.62s; }
-  .petalo:nth-child(3){ animation-delay:2.74s; }
-  .petalo:nth-child(4){ animation-delay:2.86s; }
-  .petalo:nth-child(5){ animation-delay:2.98s; }
-  .petalo:nth-child(6){ animation-delay:3.10s; }
-  @keyframes abrir{
-    to{ transform:scale(1) rotate(var(--rot)); opacity:1; }
-  }
+      .petalo {
+        transform-origin: 200px 210px;
+        transform: scale(0) rotate(var(--rot));
+        opacity: 0;
+        animation: abrir 1.15s cubic-bezier(0.25, 1.6, 0.4, 1) forwards;
+      }
+      .petalo:nth-child(1) {
+        animation-delay: 2.5s;
+      }
+      .petalo:nth-child(2) {
+        animation-delay: 2.62s;
+      }
+      .petalo:nth-child(3) {
+        animation-delay: 2.74s;
+      }
+      .petalo:nth-child(4) {
+        animation-delay: 2.86s;
+      }
+      .petalo:nth-child(5) {
+        animation-delay: 2.98s;
+      }
+      .petalo:nth-child(6) {
+        animation-delay: 3.1s;
+      }
+      @keyframes abrir {
+        to {
+          transform: scale(1) rotate(var(--rot));
+          opacity: 1;
+        }
+      }
 
-  .centro{
-    transform-origin:200px 210px;
-    transform:scale(0);
-    opacity:0;
-    animation:brillar 1s 3.5s cubic-bezier(.3,1.4,.5,1) forwards;
-  }
-  @keyframes brillar{
-    to{ transform:scale(1); opacity:1; }
-  }
+      .centro {
+        transform-origin: 200px 210px;
+        transform: scale(0);
+        opacity: 0;
+        animation: brillar 1s 3.5s cubic-bezier(0.3, 1.4, 0.5, 1) forwards;
+      }
+      @keyframes brillar {
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
 
-  .brillo{
-    opacity:0;
-    animation:pulso 3s 4.2s ease-in-out infinite;
-  }
-  @keyframes pulso{
-    0%,100%{ opacity:.15; }
-    50%{ opacity:.5; }
-  }
+      .brillo {
+        opacity: 0;
+        animation: pulso 3s 4.2s ease-in-out infinite;
+      }
+      @keyframes pulso {
+        0%,
+        100% {
+          opacity: 0.15;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
 
-  /* ---------- texto ---------- */
-  .texto{
-    text-align:center;
-    color:var(--crema);
-    opacity:0;
-    transform:translateY(14px);
-    animation:texto-in 1.4s 4.1s ease forwards;
-    padding:0 12px;
-    max-width:340px;
-  }
-  @keyframes texto-in{
-    to{ opacity:1; transform:translateY(0); }
-  }
-  .texto .nombre{
-    font-family:'Cormorant Garamond', serif;
-    font-style:italic;
-    font-weight:600;
-    font-size:clamp(22px, 6vw, 30px);
-    color:var(--petalo-1);
-    margin:0 0 6px;
-    letter-spacing:.3px;
-  }
-  .texto .mensaje{
-    font-family:'Cormorant Garamond', serif;
-    font-weight:500;
-    font-size:clamp(17px, 4.4vw, 20px);
-    line-height:1.5;
-    margin:0 0 10px;
-    color:var(--crema);
-    opacity:.92;
-  }
-  .texto .firma{
-    font-size:12px;
-    letter-spacing:1.5px;
-    text-transform:uppercase;
-    color:var(--musgo);
-    opacity:0;
-    animation:texto-in 1.2s 4.6s ease forwards;
-  }
+      /* ---------- texto ---------- */
+      .texto {
+        text-align: center;
+        color: var(--crema);
+        opacity: 0;
+        transform: translateY(14px);
+        animation: texto-in 1.4s 4.1s ease forwards;
+        padding: 0 12px;
+        max-width: 340px;
+      }
+      @keyframes texto-in {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .texto .nombre {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-weight: 600;
+        font-size: clamp(22px, 6vw, 30px);
+        color: var(--petalo-1);
+        margin: 0 0 6px;
+        letter-spacing: 0.3px;
+      }
+      .texto .mensaje {
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 500;
+        font-size: clamp(17px, 4.4vw, 20px);
+        line-height: 1.5;
+        margin: 0 0 10px;
+        color: var(--crema);
+        opacity: 0.92;
+      }
+      .texto .firma {
+        font-size: 12px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--musgo);
+        opacity: 0;
+        animation: texto-in 1.2s 4.6s ease forwards;
+      }
 
-  /* ---------- botón replantar ---------- */
-  .replantar{
-    position:absolute;
-    bottom:22px;
-    left:50%;
-    transform:translateX(-50%);
-    background:rgba(255,255,255,0.06);
-    border:1px solid rgba(255,255,255,0.16);
-    color:var(--crema);
-    font-family:'Quicksand', sans-serif;
-    font-size:12.5px;
-    letter-spacing:.5px;
-    padding:9px 18px;
-    border-radius:999px;
-    opacity:0;
-    animation:texto-in 1s 4.8s ease forwards;
-    backdrop-filter:blur(6px);
-    cursor:pointer;
-  }
-  .replantar:active{ transform:translateX(-50%) scale(.95); }
+      /* ---------- botón replantar ---------- */
+      .replantar {
+        position: absolute;
+        bottom: 22px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        color: var(--crema);
+        font-family: "Quicksand", sans-serif;
+        font-size: 12.5px;
+        letter-spacing: 0.5px;
+        padding: 9px 18px;
+        border-radius: 999px;
+        opacity: 0;
+        animation: texto-in 1s 4.8s ease forwards;
+        backdrop-filter: blur(6px);
+        cursor: pointer;
+      }
+      .replantar:active {
+        transform: translateX(-50%) scale(0.95);
+      }
 
-  @media (prefers-reduced-motion: reduce){
-    .tallo-path, .hoja, .capullo, .petalo, .centro, .texto, .texto .firma, .replantar{
-      animation-duration:.01s !important;
-      animation-delay:0s !important;
-    }
-  }
-</style>
-</head>
-<body>
+      @media (prefers-reduced-motion: reduce) {
+        .tallo-path,
+        .hoja,
+        .capullo,
+        .petalo,
+        .centro,
+        .texto,
+        .texto .firma,
+        .replantar {
+          animation-duration: 0.01s !important;
+          animation-delay: 0s !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="escena">
+      <div class="luciernagas" id="luciernagas"></div>
+      <div class="suelo"></div>
 
-<div id="escena">
-  <div class="luciernagas" id="luciernagas"></div>
-  <div class="suelo"></div>
+      <div class="flor-wrap">
+        <svg viewBox="0 0 400 420" id="flor-svg">
+          <!-- tallo -->
+          <path class="tallo-path" d="M200,400 C195,330 205,280 200,215" />
 
-  <div class="flor-wrap">
-    <svg viewBox="0 0 400 420" id="flor-svg">
-      <!-- tallo -->
-      <path class="tallo-path" d="M200,400 C195,330 205,280 200,215" />
+          <!-- hojas -->
+          <path
+            class="hoja h1"
+            style="--ox: 186px; --oy: 320px; --rot: -8deg"
+            d="M186,320 C150,308 128,332 118,362 C158,368 186,352 186,320 Z"
+            fill="var(--musgo)"
+          />
+          <path
+            class="hoja h2"
+            style="--ox: 212px; --oy: 270px; --rot: 10deg"
+            d="M212,270 C250,256 274,278 284,306 C244,314 212,300 212,270 Z"
+            fill="var(--musgo)"
+          />
 
-      <!-- hojas -->
-      <path class="hoja h1" style="--ox:186px; --oy:320px; --rot:-8deg"
-        d="M186,320 C150,308 128,332 118,362 C158,368 186,352 186,320 Z"
-        fill="var(--musgo)" />
-      <path class="hoja h2" style="--ox:212px; --oy:270px; --rot:10deg"
-        d="M212,270 C250,256 274,278 284,306 C244,314 212,300 212,270 Z"
-        fill="var(--musgo)" />
+          <!-- flor -->
+          <g class="capullo">
+            <g class="brillo">
+              <circle
+                cx="200"
+                cy="210"
+                r="60"
+                fill="var(--petalo-1)"
+                opacity="0.18"
+              />
+            </g>
 
-      <!-- flor -->
-      <g class="capullo">
-        <g class="brillo">
-          <circle cx="200" cy="210" r="60" fill="var(--petalo-1)" opacity="0.18" />
-        </g>
+            <path
+              class="petalo"
+              style="--rot: 0deg"
+              d="M200,210 C214,190 214,150 200,132 C186,150 186,190 200,210 Z"
+              fill="var(--petalo-1)"
+            />
+            <path
+              class="petalo"
+              style="--rot: 60deg"
+              d="M200,210 C214,190 214,150 200,132 C186,150 186,190 200,210 Z"
+              fill="var(--petalo-2)"
+            />
+            <path
+              class="petalo"
+              style="--rot: 120deg"
+              d="M200,210 C214,190 214,150 200,132 C186,150 186,190 200,210 Z"
+              fill="var(--petalo-1)"
+            />
+            <path
+              class="petalo"
+              style="--rot: 180deg"
+              d="M200,210 C214,190 214,150 200,132 C186,150 186,190 200,210 Z"
+              fill="var(--petalo-2)"
+            />
+            <path
+              class="petalo"
+              style="--rot: 240deg"
+              d="M200,210 C214,190 214,150 200,132 C186,150 186,190 200,210 Z"
+              fill="var(--petalo-1)"
+            />
+            <path
+              class="petalo"
+              style="--rot: 300deg"
+              d="M200,210 C214,190 214,150 200,132 C186,150 186,190 200,210 Z"
+              fill="var(--petalo-2)"
+            />
 
-        <path class="petalo" style="--rot:0deg"   d="M200,210 C214,190 214,150 200,132 C186,150 186,190 200,210 Z" fill="var(--petalo-1)"/>
-        <path class="petalo" style="--rot:60deg"  d="M200,210 C214,190 214,150 200,132 C186,150 186,190 200,210 Z" fill="var(--petalo-2)"/>
-        <path class="petalo" style="--rot:120deg" d="M200,210 C214,190 214,150 200,132 C186,150 186,190 200,210 Z" fill="var(--petalo-1)"/>
-        <path class="petalo" style="--rot:180deg" d="M200,210 C214,190 214,150 200,132 C186,150 186,190 200,210 Z" fill="var(--petalo-2)"/>
-        <path class="petalo" style="--rot:240deg" d="M200,210 C214,190 214,150 200,132 C186,150 186,190 200,210 Z" fill="var(--petalo-1)"/>
-        <path class="petalo" style="--rot:300deg" d="M200,210 C214,190 214,150 200,132 C186,150 186,190 200,210 Z" fill="var(--petalo-2)"/>
+            <circle
+              class="centro"
+              cx="200"
+              cy="210"
+              r="15"
+              fill="var(--centro)"
+            />
+          </g>
+        </svg>
+      </div>
 
-        <circle class="centro" cx="200" cy="210" r="15" fill="var(--centro)" />
-      </g>
-    </svg>
-  </div>
+      <div class="texto">
+        <p class="nombre" id="txt-nombre"></p>
+        <p class="mensaje" id="txt-mensaje"></p>
+        <p class="firma" id="txt-firma"></p>
+      </div>
 
-  <div class="texto">
-    <p class="nombre" id="txt-nombre"></p>
-    <p class="mensaje" id="txt-mensaje"></p>
-    <p class="firma" id="txt-firma"></p>
-  </div>
+      <button class="replantar" id="btn-replantar">volver a florecer</button>
+    </div>
 
-  <button class="replantar" id="btn-replantar">volver a florecer</button>
-</div>
+    <script>
+      document.getElementById("txt-nombre").textContent = CONFIG.nombre;
+      document.getElementById("txt-mensaje").innerHTML = CONFIG.mensaje;
+      document.getElementById("txt-firma").textContent = CONFIG.firma;
 
-<script>
-  document.getElementById('txt-nombre').textContent  = CONFIG.nombre;
-  document.getElementById('txt-mensaje').innerHTML = CONFIG.mensaje;
-  document.getElementById('txt-firma').textContent    = CONFIG.firma;
+      // luciérnagas
+      const cont = document.getElementById("luciernagas");
+      for (let i = 0; i < 16; i++) {
+        const d = document.createElement("div");
+        d.className = "luciernaga";
+        d.style.left = Math.random() * 100 + "%";
+        d.style.top = 10 + Math.random() * 70 + "%";
+        d.style.animationDelay = Math.random() * 6 + "s";
+        d.style.animationDuration = 5 + Math.random() * 5 + "s";
+        cont.appendChild(d);
+      }
+      setTimeout(() => cont.classList.add("on"), 4300);
 
-  // luciérnagas
-  const cont = document.getElementById('luciernagas');
-  for(let i=0;i<16;i++){
-    const d = document.createElement('div');
-    d.className = 'luciernaga';
-    d.style.left = Math.random()*100+'%';
-    d.style.top  = (10+Math.random()*70)+'%';
-    d.style.animationDelay = (Math.random()*6)+'s';
-    d.style.animationDuration = (5+Math.random()*5)+'s';
-    cont.appendChild(d);
-  }
-  setTimeout(()=>cont.classList.add('on'), 4300);
-
-  // replantar: reinicia todas las animaciones
-  document.getElementById('btn-replantar').addEventListener('click', ()=>{
-    cont.classList.remove('on');
-    const escena = document.getElementById('escena');
-    const clone = escena.cloneNode(true);
-    escena.replaceWith(clone);
-    // re-vincular eventos tras el clonado
-    initAfterClone();
-  });
-
-  function initAfterClone(){
-    document.getElementById('btn-replantar').addEventListener('click', ()=>{
-      location.reload();
-    });
-    const c = document.getElementById('luciernagas');
-    setTimeout(()=>c.classList.add('on'), 4300);
-  }
-
- if('serviceWorker' in navigator){
-    navigator.serviceWorker.register('sw.js').then((reg) => {
-      // apenas se abre la app, chequea si hay una versión nueva
-      reg.update();
-
-      // y también cada vez que vuelve del segundo plano (la abrió desde el ícono)
-      document.addEventListener('visibilitychange', () => {
-        if(document.visibilityState === 'visible') reg.update();
+      // replantar: reinicia todas las animaciones
+      document.getElementById("btn-replantar").addEventListener("click", () => {
+        cont.classList.remove("on");
+        const escena = document.getElementById("escena");
+        const clone = escena.cloneNode(true);
+        escena.replaceWith(clone);
+        // re-vincular eventos tras el clonado
+        initAfterClone();
       });
 
-      reg.addEventListener('updatefound', () => {
-        const nueva = reg.installing;
-        if(!nueva) return;
-        nueva.addEventListener('statechange', () => {
-          if(nueva.state === 'installed' && navigator.serviceWorker.controller){
-            // hay una versión nueva lista: recargar solo, sin avisar
-            window.location.reload();
-          }
+      function initAfterClone() {
+        document
+          .getElementById("btn-replantar")
+          .addEventListener("click", () => {
+            location.reload();
+          });
+        const c = document.getElementById("luciernagas");
+        setTimeout(() => c.classList.add("on"), 4300);
+      }
+
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("sw.js")
+          .then((reg) => {
+            // apenas se abre la app, chequea si hay una versión nueva
+            reg.update();
+
+            // y también cada vez que vuelve del segundo plano (la abrió desde el ícono)
+            document.addEventListener("visibilitychange", () => {
+              if (document.visibilityState === "visible") reg.update();
+            });
+
+            reg.addEventListener("updatefound", () => {
+              const nueva = reg.installing;
+              if (!nueva) return;
+              nueva.addEventListener("statechange", () => {
+                if (
+                  nueva.state === "installed" &&
+                  navigator.serviceWorker.controller
+                ) {
+                  // hay una versión nueva lista: recargar solo, sin avisar
+                  window.location.reload();
+                }
+              });
+            });
+          })
+          .catch(() => {});
+
+        // por si el "activate" del sw ya tomó control, recarga una sola vez
+        let yaRecargo = false;
+        navigator.serviceWorker.addEventListener("controllerchange", () => {
+          if (yaRecargo) return;
+          yaRecargo = true;
+          window.location.reload();
         });
-      });
-    }).catch(()=>{});
-
-    // por si el "activate" del sw ya tomó control, recarga una sola vez
-    let yaRecargo = false;
-    navigator.serviceWorker.addEventListener('controllerchange', () => {
-      if(yaRecargo) return;
-      yaRecargo = true;
-      window.location.reload();
-    });
-  }
-</script>
-</body>
+      }
+    </script>
+  </body>
 </html>
